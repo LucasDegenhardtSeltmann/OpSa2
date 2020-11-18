@@ -1,5 +1,7 @@
 package business;
 
+import ownUtil.PlausiException;
+
 public class Freizeitbad {
 	// Name des Freizeitbads
     private String name;
@@ -11,13 +13,78 @@ public class Freizeitbad {
     // Wassertemperatur des laengsten Beckens
     private int temperatur;
     
-    public Freizeitbad(String name, String geoeffnetVon, String geoeffnetBis, String beckenlaenge, String temperatur){
-        		this.name = name;
-          	    this.geoeffnetVon = Float.parseFloat(geoeffnetVon);
-          	    this.geoeffnetBis = Float.parseFloat(geoeffnetBis);
-           	    this.beckenlaenge = Integer.parseInt(beckenlaenge);
-           	    this.temperatur = Integer.parseInt(temperatur);
+    public Freizeitbad(String name, String geoeffnetVon, String geoeffnetBis, String beckenlaenge, String temperatur) throws PlausiException{
+    	String feldname = pruefeFormal(name, geoeffnetVon, geoeffnetBis, beckenlaenge, temperatur);
+         	if(feldname == null){
+         		this.name = name;
+              	this.geoeffnetVon = Float.parseFloat(geoeffnetVon);
+              	this.geoeffnetBis = Float.parseFloat(geoeffnetBis);
+               	this.beckenlaenge = Integer.parseInt(beckenlaenge);
+               	this.temperatur = Integer.parseInt(temperatur);
+            	feldname = pruefeInhaltlich();
+            	if(feldname != null) {
+           	        throw new PlausiException(PlausiException.INHALTLICH, feldname);
+            	}
+             }
+         	else {
+         		throw new PlausiException(PlausiException.FORMAL, feldname);
+             }
+         	
     }
+    
+    private String pruefeFormal(
+        	String name, String geoeffnetVon, String geoeffnetBis,
+            String beckenlaenge, String temperatur) {
+            String erg = null;
+            if(name == null || "".equals(name)){
+            	return "Name";
+            }
+            else{
+    	        try {
+    	            Float.parseFloat(geoeffnetVon);
+    	        }
+    	        catch(NumberFormatException exc) {
+    	            return "Geöffnet von";
+    	        }
+    	        try {
+    	            Float.parseFloat(geoeffnetBis);
+    	        }
+    	        catch(NumberFormatException exc) {
+    	        	return "Geöffnet bis";
+    	        }
+    	        try {
+    	            Integer.parseInt(beckenlaenge);
+    	        }
+    	        catch(NumberFormatException exc) {
+    	        	return "Beckenlänge";
+    	        }
+    	        try {
+    	            Integer.parseInt(temperatur);
+    	        }
+    	        catch(NumberFormatException exc){
+    	        	return "Temperatur";
+    	        }
+            }
+            return erg;
+        }
+        
+        private String pruefeInhaltlich() {
+            String erg = null;
+            if(getGeoeffnetVon() < 0 || getGeoeffnetVon() >= 24){
+            	return "Geöffnet von";
+            }
+            if(getGeoeffnetBis() < 0 || getGeoeffnetBis() >= 24
+            	|| getGeoeffnetBis() <= getGeoeffnetVon()){
+            	return "Geöffnet bis";
+            }
+            if(getBeckenlaenge() <= 0){
+            	return "Beckenlänge";
+            }
+            if(getTemperatur() <= 0 || getTemperatur() >= 100){
+            	return "Temperatur";
+            }
+            return erg;
+        }
     
     public String getName() {
 		return name;
