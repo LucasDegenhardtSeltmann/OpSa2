@@ -35,7 +35,10 @@ public class FreizeitbaederControl {
 		 try{
 			 if("csv".equals(typ)){
 				 freizeitbad.schreibeFreizeitbaederInCsvDatei();
-				 freizeitbaederView.zeigeInformationsfensterAn("Die Freizeitbäder wurden gespeichert!");
+				 freizeitbaederView.zeigeInformationsfensterAn("Die Freizeitbäder wurden in csv gespeichert!");
+			 }else if("txt".contentEquals(typ)) {
+				 freizeitbad.schreibeFreizeitbaederInTxtDatei();
+				 freizeitbaederView.zeigeInformationsfensterAn("Die Freizeitbäder wurden in txt gespeichert!");
 			 }
 			 else{
 				 freizeitbaederView.zeigeInformationsfensterAn("Noch nicht implementiert!");
