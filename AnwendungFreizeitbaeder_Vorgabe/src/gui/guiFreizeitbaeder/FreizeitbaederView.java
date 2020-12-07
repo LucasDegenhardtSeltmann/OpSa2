@@ -1,4 +1,4 @@
-package gui;
+package gui.guiFreizeitbaeder;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import ownUtil.MeldungsfensterAnzeiger;
 
 public class FreizeitbaederView {
-	private FreizeitbaederControl freizeitbaederControl = new FreizeitbaederControl(this);
+	private FreizeitbaederControl freizeitbaederControl;
 	//---Anfang Attribute der grafischen Oberflaeche---
     private Pane pane     				= new  Pane();
     private Label lblEingabe    	 	= new Label("Eingabe");
@@ -41,11 +41,12 @@ public class FreizeitbaederView {
     private MenuItem mnItmTxtExport 	= new MenuItem("txt-Export");
     //-------Ende Attribute der grafischen Oberflaeche-------
 	
-    public FreizeitbaederView(Stage primaryStage){
+    public FreizeitbaederView(Stage primaryStage, FreizeitbaederControl control){
     	Scene scene = new Scene(this.pane, 560, 340);
     	primaryStage.setScene(scene);
     	primaryStage.setTitle("Verwaltung von Freizeitbädern");
     	primaryStage.show();
+    	freizeitbaederControl = control;
     	this.initKomponenten();
 		this.initListener();
     }

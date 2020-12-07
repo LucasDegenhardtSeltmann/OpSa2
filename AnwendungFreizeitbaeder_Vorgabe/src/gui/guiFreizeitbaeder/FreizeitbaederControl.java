@@ -1,21 +1,26 @@
-package gui;
+package gui.guiFreizeitbaeder;
 
 import java.io.IOException;
 
 import business.FreizeitbaederModel;
 import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
 import ownUtil.PlausiException;
 
 public class FreizeitbaederControl {
 	private FreizeitbaederView freizeitbaederView;
 	private FreizeitbaederModel freizeitbad;
-	
+	/*
 	public FreizeitbaederControl(FreizeitbaederView fbv) {
 		freizeitbaederView = fbv;
+	}*/
+	public FreizeitbaederControl(Stage primaryStage) {
+		freizeitbaederView = new FreizeitbaederView(primaryStage,this);
 	}
 	public void nehmeFreizeitbadAuf(String name, String von, String bis, String laenge, String temp){
     	try{
-    		this.freizeitbad = new FreizeitbaederModel(name, von, bis, laenge, temp);
+    		this.freizeitbad = FreizeitbaederModel.getInstance();
+    		freizeitbad.newFreizeitbad(name, von, bis, laenge, temp);
     		freizeitbaederView.zeigeInformationsfensterAn("Das Freizeitbad wurde aufgenommen!");
        	}
        	catch(PlausiException exc){
