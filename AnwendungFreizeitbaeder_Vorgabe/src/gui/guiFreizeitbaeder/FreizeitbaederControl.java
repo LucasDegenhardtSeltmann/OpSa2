@@ -7,21 +7,19 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import ownUtil.PlausiException;
 
-public class FreizeitbaederControl {
+public class FreizeitbaederControl implements Observer{
 	private FreizeitbaederView freizeitbaederView;
 	private FreizeitbaederModel freizeitbad;
-	/*
-	public FreizeitbaederControl(FreizeitbaederView fbv) {
-		freizeitbaederView = fbv;
-	}*/
+
 	public FreizeitbaederControl(Stage primaryStage) {
 		freizeitbaederView = new FreizeitbaederView(primaryStage,this);
+		this.freizeitbad = FreizeitbaederModel.getInstance();
+		freizeitbad.addObserver(this);
 	}
 	public void nehmeFreizeitbadAuf(String name, String von, String bis, String laenge, String temp){
     	try{
-    		this.freizeitbad = FreizeitbaederModel.getInstance();
     		freizeitbad.newFreizeitbad(name, von, bis, laenge, temp);
-    		freizeitbaederView.zeigeInformationsfensterAn("Das Freizeitbad wurde aufgenommen!");
+    		//freizeitbaederView.zeigeInformationsfensterAn("Das Freizeitbad wurde aufgenommen!");
        	}
        	catch(PlausiException exc){
        		freizeitbaederView.zeigeFehlermeldungsfensterAn(exc.getPlausiTyp() + "er ", exc.getMessage());
@@ -55,6 +53,10 @@ public class FreizeitbaederControl {
 		 catch(Exception exc){
 				freizeitbaederView.zeigeFehlermeldungsfensterAn("unknown","Unbekannter Fehler beim Speichern!");
 		}
+	}
+	@Override
+	public void update() {
+		freizeitbaederView.zeigeFreizeitbaederAn();
 	}
 		 
 	

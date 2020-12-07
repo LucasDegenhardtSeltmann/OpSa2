@@ -147,7 +147,7 @@ public class FreizeitbaederView {
     		    txtWassTemperatur.getText());
     }
     
-    private void zeigeFreizeitbaederAn(){
+    void zeigeFreizeitbaederAn(){
     	freizeitbaederControl.zeigeFreizeitbaederAn(txtAnzeige);
     }	
     

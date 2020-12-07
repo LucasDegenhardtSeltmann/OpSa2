@@ -16,10 +16,8 @@ public class SportstaettenView {
 	private FreizeitbaederModel freizeitbaederModel = FreizeitbaederModel.getInstance();
 	
     	//---Anfang Attribute der grafischen Oberflaeche---
-    	private Pane pane     				       
- 		= new  Pane();
-    	private Label lblAnzeigeFreizeitbaeder     
- 		= new Label("Anzeige Freizeitbäder");
+    	private Pane pane = new  Pane();
+    	private Label lblAnzeigeFreizeitbaeder = new Label("Anzeige Freizeitbäder");
     	private TextArea txtAnzeigeFreizeitbaeder  = new TextArea();
     	private Button btnAnzeigeFreizeitbaeder = new Button("Anzeige");
     	//-------Ende Attribute der grafischen Oberflaeche-------
@@ -65,7 +63,7 @@ public class SportstaettenView {
    	    });
     }
    
-    private void zeigeFreizeitbaederAn(){
+    void zeigeFreizeitbaederAn(){
     		if(freizeitbaederModel.getFreizeitbad() != null){
     			txtAnzeigeFreizeitbaeder.setText(
     				freizeitbaederModel.getFreizeitbad()
