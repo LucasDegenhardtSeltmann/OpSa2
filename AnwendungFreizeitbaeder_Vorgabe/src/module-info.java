@@ -3,5 +3,6 @@ module anwendungFreizeitbaeder {
 	requires javafx.graphics;
 	requires javafx.controls;
 	requires jdk.compiler;
+	requires org.junit.jupiter.api;
 	exports main;
 }

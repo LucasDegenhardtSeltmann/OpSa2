@@ -29,7 +29,6 @@ public class Freizeitbad {
          	else {
          		throw new PlausiException(PlausiException.FORMAL, feldname);
              }
-         	
     }
     
     private String pruefeFormal(
