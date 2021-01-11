@@ -138,6 +138,8 @@ public class FreizeitbaederView {
 	    		 schreibeFreizeitbaederInDatei("txt");
 	    	 }
 	    });
+	    mnItmCsvExport.setOnAction(e -> {schreibeFreizeitbaederInDatei("csv");});
+	    mnItmTxtExport.setOnAction(e -> {schreibeFreizeitbaederInDatei("txt");});
     }
     private void nehmeFreizeitbadAuf(){
     	freizeitbaederControl.nehmefreizeitbaederAuf(txtName.getText(), 
