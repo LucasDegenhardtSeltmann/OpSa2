@@ -1,7 +1,7 @@
 package gui.guiSportstaetten;
 
 import business.FreizeitbaederModel;
-import gui.guiFreizeitbaeder.Observer;
+import gui.Observer;
 import javafx.stage.Stage;
 
 public class SportstaettenControl implements Observer{

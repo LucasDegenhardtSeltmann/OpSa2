@@ -1,6 +1,6 @@
 package business;
 
-import gui.guiFreizeitbaeder.Observer;
+import gui.Observer;
 
 public interface Observable {
 	public void addObserver(Observer obs);

@@ -1,4 +1,4 @@
-package gui.guiFreizeitbaeder;
+package gui;
 
 public interface Observer {
 	public void update();

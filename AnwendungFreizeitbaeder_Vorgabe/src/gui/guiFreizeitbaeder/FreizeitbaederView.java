@@ -140,7 +140,7 @@ public class FreizeitbaederView {
 	    });
     }
     private void nehmeFreizeitbadAuf(){
-    	freizeitbaederControl.nehmeFreizeitbadAuf(txtName.getText(), 
+    	freizeitbaederControl.nehmefreizeitbaederAuf(txtName.getText(), 
    	            txtGeoeffnetVon.getText(),
    	            txtGeoeffnetBis.getText(),
     		    txtBeckenlaenge.getText(),

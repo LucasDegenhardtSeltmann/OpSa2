@@ -1,5 +1,18 @@
 Daten des Freizeitbades
-Name des Freizeitbades:			Witten Annen
-Öffnungszeit des Freizeitbads:		12.0 - 15.0
-Beckenlänge des Freizeitbads:		25
+Name des Freizeitbades:			Test3
+Öffnungszeit des Freizeitbads:		10.0 - 12.0
+Beckenlänge des Freizeitbads:		24
 Wassertemperatur des Freizeitbads:	22
+
+Daten des Freizeitbades
+Name des Freizeitbades:			Test4
+Öffnungszeit des Freizeitbads:		10.0 - 12.0
+Beckenlänge des Freizeitbads:		24
+Wassertemperatur des Freizeitbads:	22
+
+Daten des Freizeitbades
+Name des Freizeitbades:			Test5
+Öffnungszeit des Freizeitbads:		10.0 - 12.0
+Beckenlänge des Freizeitbads:		24
+Wassertemperatur des Freizeitbads:	22
+

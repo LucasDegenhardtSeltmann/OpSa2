@@ -1,13 +1,14 @@
 package business;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import ownUtil.PlausiException;
 import factory.CsvCreator;
 import factory.Creator;
 import factory.Product;
 import factory.TxtCreator;
-import gui.guiFreizeitbaeder.Observer;
+import gui.Observer;
 
 
 public class FreizeitbaederModel implements Observable{
@@ -20,35 +21,47 @@ public class FreizeitbaederModel implements Observable{
 		}
 		return FreizeitbaederModel.instance;
 	}
-	private Freizeitbad freizeitbad;
+	private ArrayList<Freizeitbad> freizeitbaeder = new ArrayList<Freizeitbad>();
     private Observer[] observers = new Observer[2];
     private int obscount = 0;
 	
     public void newFreizeitbad (String name, String geoeffnetVon, String geoeffnetBis, String beckenlaenge, String temperatur) throws PlausiException {
-    	freizeitbad = new Freizeitbad(name, geoeffnetVon, geoeffnetBis, beckenlaenge, temperatur);
-    	notifyObservers();
-    }
-           
-    public String gibFreizeitbadZurueck(char trenner){
-    	return freizeitbad.gibFreizeitbadZurueck(';');
+    	addFreizeitbad(new Freizeitbad(name, geoeffnetVon, geoeffnetBis, beckenlaenge, temperatur));
     }
     
-    public Freizeitbad getFreizeitbad() {
-    	return freizeitbad;
+    public void addFreizeitbad(Freizeitbad freizeitbad) {
+    	freizeitbaeder.add(freizeitbad);
+    	notifyObservers();
+    }
+      /*     
+    public String gibFreizeitbaederZurueck(char trenner){
+    	String returnBaeder = "";
+    	for(Freizeitbad freizeitbad : freizeitbaeder) {
+    		returnBaeder += freizeitbad.gibFreizeitbadZurueck(';');
+    	}
+    	return returnBaeder;
+    }
+    */
+    public ArrayList<Freizeitbad> getFreizeitbaeder() {
+    	return freizeitbaeder;
     }
     
 	public void schreibeFreizeitbaederInCsvDatei() throws IOException{
 		Creator factory = new CsvCreator();
 		
 		Product writer = factory.factoryMethod();
-		writer.fuegeInDateiHinzu(freizeitbad.gibFreizeitbadZurueck(';'));
+		for(Freizeitbad freizeitbad : freizeitbaeder) {
+			writer.fuegeInDateiHinzu(freizeitbad.gibFreizeitbadZurueck(';') + "\n");
+		}
 	 	writer.schliesseDatei();
 	}
 	public void schreibeFreizeitbaederInTxtDatei() throws IOException{
 		Creator factoryTxt = new TxtCreator();
 		
 		Product writerTxt = factoryTxt.factoryMethod();
-		writerTxt.fuegeInDateiHinzu(freizeitbad.gibFreizeitbadZurueck(';'));
+		for(Freizeitbad freizeitbad : freizeitbaeder) {
+			writerTxt.fuegeInDateiHinzu(freizeitbad.gibFreizeitbadZurueck(';') + "\n");
+		}
 		writerTxt.schliesseDatei();
 	}
 
