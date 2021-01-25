@@ -19,7 +19,7 @@ import ownUtil.MeldungsfensterAnzeiger;
 public class FreizeitbaederView {
 	private FreizeitbaederControl freizeitbaederControl;
 	//---Anfang Attribute der grafischen Oberflaeche---
-    private Pane pane     				= new  Pane();
+    private Pane pane     				= new Pane();
     private Label lblEingabe    	 	= new Label("Eingabe");
     private Label lblAnzeige   	 	    = new Label("Anzeige");
     private Label lblName 				= new Label("Name:");
@@ -36,9 +36,12 @@ public class FreizeitbaederView {
     private Button btnEingabe 		 	= new Button("Eingabe");
     private Button btnAnzeige 		 	= new Button("Anzeige");
     private MenuBar mnbrMenuLeiste  	= new MenuBar();
-    private Menu mnDatei             	= new Menu("Datei");
-    private MenuItem mnItmCsvExport 	= new MenuItem("csv-Export");
-    private MenuItem mnItmTxtExport 	= new MenuItem("txt-Export");
+    private Menu mnImport            	= new Menu("Datei-Import");
+    private Menu mnExport           	= new Menu("Datei-Export");
+    private MenuItem mnItmCsvExport 	= new MenuItem("Csv-Export");
+    private MenuItem mnItmCsvImport 	= new MenuItem("Csv-Import");
+    private MenuItem mnItmTxtExport 	= new MenuItem("Txt-Export");
+    private MenuItem mnItmTxtImport 	= new MenuItem("Txt-Import");
     //-------Ende Attribute der grafischen Oberflaeche-------
 	
     public FreizeitbaederView(Stage primaryStage, FreizeitbaederControl control){
@@ -107,9 +110,11 @@ public class FreizeitbaederView {
         pane.getChildren().addAll(btnEingabe, btnAnzeige); 
         
  		// Menu
-   	    this.mnbrMenuLeiste.getMenus().add(mnDatei);
-  	    this.mnDatei.getItems().add(mnItmCsvExport);
-  	    this.mnDatei.getItems().add(mnItmTxtExport);
+   	    this.mnbrMenuLeiste.getMenus().addAll(mnImport,mnExport);
+  	    this.mnExport.getItems().add(mnItmCsvExport);
+  	    this.mnImport.getItems().add(mnItmCsvImport);
+  	    this.mnExport.getItems().add(mnItmTxtExport);
+  	    this.mnImport.getItems().add(mnItmTxtImport);
  	    pane.getChildren().add(mnbrMenuLeiste);
    }
     

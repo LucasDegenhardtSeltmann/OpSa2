@@ -1,8 +1,9 @@
-package business;
+package business.businessFreizeitbaeder;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import business.Observable;
 import ownUtil.PlausiException;
 import factory.CsvCreator;
 import factory.Creator;
@@ -33,15 +34,6 @@ public class FreizeitbaederModel implements Observable{
     	freizeitbaeder.add(freizeitbad);
     	notifyObservers();
     }
-      /*     
-    public String gibFreizeitbaederZurueck(char trenner){
-    	String returnBaeder = "";
-    	for(Freizeitbad freizeitbad : freizeitbaeder) {
-    		returnBaeder += freizeitbad.gibFreizeitbadZurueck(';');
-    	}
-    	return returnBaeder;
-    }
-    */
     public ArrayList<Freizeitbad> getFreizeitbaeder() {
     	return freizeitbaeder;
     }

@@ -2,8 +2,8 @@ package gui.guiFreizeitbaeder;
 
 import java.io.IOException;
 
-import business.Freizeitbad;
-import business.FreizeitbaederModel;
+import business.businessFreizeitbaeder.Freizeitbad;
+import business.businessFreizeitbaeder.FreizeitbaederModel;
 import gui.Observer;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
